@@ -1,7 +1,11 @@
 package nl.hva.ict.ss.compression;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HuffmanCompression {
     private final String text;
@@ -40,6 +44,24 @@ public class HuffmanCompression {
      * @return the Huffman codes
      */
     String[] getCodes() {
+        int maxAscii = 128;
+        int letterCount[] = new int[maxAscii];
+        for (int i = 0; i < maxAscii; i++) {
+            letterCount[i] = 0; // -1 for chars not in pattern
+//            System.out.println(letterCount[i]);
+        }
+        for (int i = 0; i < text.length()-1; i++) {
+            int currentChar = text.charAt(i);
+            letterCount[currentChar]++;
+
+//            System.out.println((char)i+":"+letterCount[i]);
+        }
+
+        for (int i = 0; i < maxAscii; i++) {
+
+            System.out.println(letterCount[i]);
+        }
+
         return null;
     }
 

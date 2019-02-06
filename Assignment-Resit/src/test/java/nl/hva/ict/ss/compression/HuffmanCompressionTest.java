@@ -11,7 +11,7 @@ public class HuffmanCompressionTest {
 
     @Before
     public void setup() {
-        compressor = new HuffmanCompression(getClass().getResourceAsStream("/nl/hva/ict/ss/compression/Huffman.java"));
+        compressor = new HuffmanCompression(getClass().getResourceAsStream("/edu/princeton/cs/algs4/Huffman.java"));
     }
 
     @Test

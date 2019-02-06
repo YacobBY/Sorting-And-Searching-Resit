@@ -22,6 +22,7 @@
 
 package edu.princeton.cs.algs4;
 
+
 /**
  *  The {@code Huffman} class provides static methods for compressing
  *  and expanding a binary input using Huffman codes over the 8-bit extended
@@ -166,6 +167,8 @@ public class Huffman {
      * Reads a sequence of bits that represents a Huffman-compressed message from
      * standard input; expands them; and writes the results to standard output.
      */
+
+
     public static void expand() {
 
         // read in Huffman trie from input stream

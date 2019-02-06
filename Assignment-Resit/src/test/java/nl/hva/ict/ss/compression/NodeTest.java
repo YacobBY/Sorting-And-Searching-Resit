@@ -9,6 +9,8 @@ import static org.junit.Assert.assertEquals;
 public class NodeTest {
     @Test
     public void canReadWhatWasWritten() throws IOException, ClassNotFoundException {
+        int ascii = (int) '(';
+        System.out.println(ascii);
 
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(("huffman-tree.bin")))) {
             Node tree = new Node(new Node(1, 'b'), new Node(2, 'a'));

@@ -20,7 +20,8 @@
  *
  ******************************************************************************/
 
-package nl.hva.ict.ss.compression;
+package edu.princeton.cs.algs4;
+
 
 /**
  *  The {@code Huffman} class provides static methods for compressing
