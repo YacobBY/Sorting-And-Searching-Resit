@@ -11,7 +11,7 @@ public class HuffmanCompressionTest {
 
     @Before
     public void setup() {
-        compressor = new HuffmanCompression(getClass().getResourceAsStream("/edu/princeton/cs/algs4/Huffman.java"));
+        compressor = new HuffmanCompression(getClass().getResourceAsStream("/nl/hva/ict/ss/compression/Huffman.java"));
     }
 
     @Test
@@ -26,6 +26,7 @@ public class HuffmanCompressionTest {
         Node right = compressionTree.getRight();
         assertEquals(1, left.getWeight());
         assertEquals(2, right.getWeight());
+
     }
 
     @Test
