@@ -29,11 +29,6 @@ public class HuffmanCompression {
         return 0.0;
     }
 
-    /**
-     * Returns the root of the compression tree.
-     *
-     * @return the root of the compression tree.
-     */
 
 
     /**
@@ -53,6 +48,11 @@ public class HuffmanCompression {
         return codes;
     }
 
+    /**
+     * Returns the root of the compression tree.
+     *
+     * @return the root of the compression tree.
+     */
 
     Node getCompressionTree() {
         ArrayList<Node> nodeList = createNodeList();
