@@ -18,12 +18,13 @@ public class HuffmanCompressionTest {
     public void checkWeightSimple() {
         compressor = new HuffmanCompression("aba");
 
-        Node compressionTree = compressor.getCompressionTree();
+        Node root = compressor.getCompressionTree();
+        System.out.println(root.getLeft().getCharacter()+ " "+ root.getLeft().getWeight());
+        System.out.println(root.getRight().getCharacter()+ " "+ root.getLeft().getWeight());
+        assertEquals(3, root.getWeight());
 
-        assertEquals(3, compressionTree.getWeight());
-
-        Node left = compressionTree.getLeft();
-        Node right = compressionTree.getRight();
+        Node left = root.getLeft();
+        Node right = root.getRight();
         assertEquals(1, left.getWeight());
         assertEquals(2, right.getWeight());
 
@@ -39,10 +40,11 @@ public class HuffmanCompressionTest {
     @Test
     public void checkNodes() {
         // Handle Linux/Mac and Windows end-of-line characters, 87 and 88 are both ok.
-        Node root = compressor.createTree();
+        Node root = compressor.getCompressionTree();
         System.out.println(root.getLeft().getWeight());
+        System.out.println(root.getLeft().getLeft().getWeight());
+        System.out.println(root.getLeft().getRight().getWeight());
         System.out.println(root.getRight().getWeight());
-        System.out.println(root.getRight().getCharacter());
 
 
     }

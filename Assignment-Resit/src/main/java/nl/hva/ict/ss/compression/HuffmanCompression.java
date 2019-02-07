@@ -34,9 +34,7 @@ public class HuffmanCompression {
      *
      * @return the root of the compression tree.
      */
-    Node getCompressionTree() {
-        return null;
-    }
+
 
     /**
      * Returns a list with the character and the code that is used to encode it.
@@ -53,7 +51,7 @@ public class HuffmanCompression {
         return codeList;
     }
 
-    Node createTree() {
+    Node getCompressionTree() {
         ArrayList<Node> nodeList = createNodeList();
         Collections.sort(nodeList, Collections.reverseOrder());
 
@@ -82,7 +80,7 @@ public class HuffmanCompression {
         for (int i = 0; i < maxAscii; i++) {
             letterCount[i] = 0;
         }
-        for (int i = 0; i < text.length() - 1; i++) {
+        for (int i = 0; i < text.length(); i++) {
             int currentChar = text.charAt(i);
             letterCount[currentChar]++;
         }
@@ -111,7 +109,7 @@ public class HuffmanCompression {
 
         for (Node node : nodelist
         ) {
-//            System.out.println(node.getCharacter() + " " + node.getWeight());
+            System.out.println(node.getCharacter() + " " + node.getWeight());
         }
 //        System.out.println(nodelist.size());
         return nodelist;
