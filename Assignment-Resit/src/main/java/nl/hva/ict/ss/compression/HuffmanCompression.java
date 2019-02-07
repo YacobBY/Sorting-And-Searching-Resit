@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.lang.Integer.*;
+import java.lang.Math;
+
 
 public class HuffmanCompression {
     private final String text;
@@ -44,7 +47,9 @@ public class HuffmanCompression {
      * @return the Huffman codes
      */
     String[] getCodes() {
-        int maxAscii = 128;
+
+        int maxAscii = 129;
+        int charsInText = 0;
         int letterCount[] = new int[maxAscii];
         for (int i = 0; i < maxAscii; i++) {
             letterCount[i] = 0; // -1 for chars not in pattern
@@ -53,16 +58,38 @@ public class HuffmanCompression {
         for (int i = 0; i < text.length()-1; i++) {
             int currentChar = text.charAt(i);
             letterCount[currentChar]++;
-
-//            System.out.println((char)i+":"+letterCount[i]);
         }
-
         for (int i = 0; i < maxAscii; i++) {
-
-            System.out.println(letterCount[i]);
+            if (letterCount[i] > 0)
+                charsInText++;
         }
 
-        return null;
+        String codeList[] = new String[charsInText];
+        for (Integer c = 0; c <=charsInText ; c++) {
+        {
+            int biggestNumber = 0;
+            int biggestIndex = 0;
+            for (int i = 0; i <= maxAscii; i++) {
+                if (letterCount[i] > biggestNumber) {
+                    biggestIndex = i;
+                    biggestNumber = letterCount[i];
+                }
+            }
+
+            if (biggestNumber > 0) {
+                codeList[c] = "'"+ (char)biggestIndex + "' ->" + Integer.toBinaryString(c);
+                letterCount[biggestIndex] = 0;
+            }
+
+        }
+
+        }
+        for (int i = 0; i < codeList.length; i++) {
+            System.out.println(codeList[i]);
+        }
+
+
+        return codeList;
     }
 
 }
