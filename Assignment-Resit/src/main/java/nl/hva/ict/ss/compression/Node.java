@@ -29,9 +29,8 @@ public class Node  implements Comparable<Node> ,Serializable  {
 
 
             /* Create a tree with three levels. */
-            Node lefter = new Node(10, (char) 100);
-            Node righter = new Node(20, (char) 101);
-            Node base = new Node(lefter, righter);
+
+            Node base = new Node(left, right);
 
 
             output.writeObject(base); // Write the tree to the stream.
