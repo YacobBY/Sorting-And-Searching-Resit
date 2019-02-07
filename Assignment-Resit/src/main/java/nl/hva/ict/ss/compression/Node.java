@@ -22,6 +22,7 @@ public class Node  implements Comparable<Node> {
     }
 
     public void write(ObjectOutputStream output) throws IOException {
+
     }
 
     public static Node read(ObjectInputStream input) throws IOException, ClassNotFoundException {

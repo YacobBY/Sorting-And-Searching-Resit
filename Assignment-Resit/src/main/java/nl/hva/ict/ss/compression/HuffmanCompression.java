@@ -49,17 +49,10 @@ public class HuffmanCompression {
     String[] getCodes() {
         ArrayList<String> nodeCodes = new ArrayList<>();
         Node root = getCompressionTree();
-
-
         String codes[] = new String[4];
         return codes;
     }
-//    String getNodeText(Node node){
-//        StringBuilder returnString =
-//        if(node.getLeft().getCharacter()== null){
-//
-//        }
-//    }
+
 
     Node getCompressionTree() {
         ArrayList<Node> nodeList = createNodeList();
