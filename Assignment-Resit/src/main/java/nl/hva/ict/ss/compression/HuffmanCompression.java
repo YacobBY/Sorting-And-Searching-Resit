@@ -11,6 +11,7 @@ public class HuffmanCompression {
 
     public HuffmanCompression(String text) {
         this.text = text;
+
     }
 
     public HuffmanCompression(InputStream input) {
@@ -45,59 +46,16 @@ public class HuffmanCompression {
      *
      * @return the Huffman codes
      */
+
+
     String[] getCodes() {
-        int maxAscii = 129;
-        int charsInText = 0;
-        int letterCount[] = new int[maxAscii];
-        for (int i = 0; i < maxAscii; i++) {
-            letterCount[i] = 0; // -1 for chars not in pattern
-//            System.out.println(letterCount[i]);
-        }
-        for (int i = 0; i < text.length() - 1; i++) {
-            int currentChar = text.charAt(i);
-            letterCount[currentChar]++;
-        }
-        for (int i = 0; i < maxAscii; i++) {
-            if (letterCount[i] > 0) {
-                ++charsInText;
-//                System.out.println("index " +i+ " "+letterCount[i]);
-            }
-        }
-
-        String codeList[] = new String[charsInText];
-        String countList[] = new String[charsInText];
-        for (Integer c = 0; c <= charsInText; c++) {
-            {
-                int biggestNumber = 0;
-                int biggestIndex = 0;
-                for (int i = 0; i < maxAscii; i++) {
-                    if (letterCount[i] > biggestNumber) {
-                        biggestIndex = i;
-                        biggestNumber = letterCount[i];
-                    }
-                }
-
-                if (biggestNumber > 0) {
-                    codeList[c] = "'" + (char) biggestIndex + "' ->" + Integer.toBinaryString(c);
-                    countList[c] = "'" + (char) biggestIndex + "Count" + letterCount[biggestIndex];
-                    letterCount[biggestIndex] = 0;
-                }
-
-            }
-
-        }
-        for (int i = 0; i < codeList.length; i++) {
-            System.out.println(codeList[i]);
-            System.out.println(countList[i]);
-        }
-
-
+        String codeList[] = new String[3];
         return codeList;
     }
-    ArrayList<Node> createNodeList(){
 
+    ArrayList<Node> createNodeList() {
         ArrayList<Node> nodelist = new ArrayList<>();
-        int maxAscii = 129;
+        int maxAscii = 128;
         int charsInText = 0;
         int letterCount[] = new int[maxAscii];
         for (int i = 0; i < maxAscii; i++) {
@@ -132,10 +90,11 @@ public class HuffmanCompression {
 
         }
         Collections.sort(nodelist);
-        for (Node node :nodelist
+        for (Node node : nodelist
         ) {
-            System.out.println(node.getCharacter()+ " "+ node.getWeight());
+            System.out.println(node.getCharacter() + " " + node.getWeight());
         }
+        System.out.println(nodelist.size());
         return nodelist;
     }
 
