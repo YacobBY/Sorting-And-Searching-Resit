@@ -44,7 +44,6 @@ public class HuffmanCompression {
      * @return the Huffman codes
      */
     String[] getCodes() {
-
         int maxAscii = 129;
         int charsInText = 0;
         int letterCount[] = new int[maxAscii];
@@ -58,12 +57,13 @@ public class HuffmanCompression {
         }
         for (int i = 0; i < maxAscii; i++) {
             if (letterCount[i] > 0) {
-                charsInText++;
-                System.out.println("index " +i+ " "+letterCount[i]);
+                ++charsInText;
+//                System.out.println("index " +i+ " "+letterCount[i]);
             }
         }
 
         String codeList[] = new String[charsInText];
+        String countList[] = new String[charsInText];
         for (Integer c = 0; c <= charsInText; c++) {
             {
                 int biggestNumber = 0;
@@ -77,6 +77,7 @@ public class HuffmanCompression {
 
                 if (biggestNumber > 0) {
                     codeList[c] = "'" + (char) biggestIndex + "' ->" + Integer.toBinaryString(c);
+                    countList[c] = "'" + (char) biggestIndex + "Count" + letterCount[biggestIndex];
                     letterCount[biggestIndex] = 0;
                 }
 
@@ -85,6 +86,7 @@ public class HuffmanCompression {
         }
         for (int i = 0; i < codeList.length; i++) {
             System.out.println(codeList[i]);
+            System.out.println(countList[i]);
         }
 
 
