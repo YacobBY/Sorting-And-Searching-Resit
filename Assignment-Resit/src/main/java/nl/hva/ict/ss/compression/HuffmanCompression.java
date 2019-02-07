@@ -53,6 +53,24 @@ public class HuffmanCompression {
         return codeList;
     }
 
+    Node createTree() {
+        ArrayList<Node> nodeList = createNodeList();
+        Collections.sort(nodeList);
+
+        int totalCount = 0;
+        for (Node node : nodeList) {
+            totalCount += node.getWeight();
+        }
+
+        while (nodeList.size() > 2) {
+
+        }
+
+        Node root = new Node(0, null);
+        return root;
+
+    }
+
     ArrayList<Node> createNodeList() {
         ArrayList<Node> nodelist = new ArrayList<>();
         int maxAscii = 128;
@@ -85,11 +103,9 @@ public class HuffmanCompression {
                     nodelist.add(new Node(letterCount[biggestIndex], (char) biggestIndex));
                     letterCount[biggestIndex] = 0;
                 }
-
             }
-
         }
-        Collections.sort(nodelist);
+
         for (Node node : nodelist
         ) {
             System.out.println(node.getCharacter() + " " + node.getWeight());
