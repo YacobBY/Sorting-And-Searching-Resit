@@ -20,15 +20,15 @@ public class HuffmanCompressionTest {
 
         Node root = compressor.getCompressionTree();
         System.out.println(root.getLeft().getCharacter()+ " "+ root.getLeft().getWeight());
-        System.out.println(root.getRight().getCharacter()+ " "+ root.getLeft().getWeight());
+        System.out.println(root.getRight().getCharacter()+ " "+ root.getRight().getWeight());
         assertEquals(3, root.getWeight());
 
         Node left = root.getLeft();
         Node right = root.getRight();
         assertEquals(1, left.getWeight());
         assertEquals(2, right.getWeight());
-
     }
+
     @Test
     public void nodelistSize() {
         // Handle Linux/Mac and Windows end-of-line characters, 87 and 88 are both ok.

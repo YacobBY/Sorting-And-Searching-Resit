@@ -30,6 +30,7 @@ public class Node  implements Comparable<Node> {
 
     @Override
     public int compareTo(Node o) {
+
         return weight - o.getWeight();
     }
 
