@@ -1,10 +1,8 @@
 package nl.hva.ict.ss.compression;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
-public class Node  implements Comparable<Node> {
+public class Node  implements Comparable<Node> ,Serializable  {
     private Node left;
     private Node right;
     private int weight;
@@ -23,11 +21,41 @@ public class Node  implements Comparable<Node> {
 
     public void write(ObjectOutputStream output) throws IOException {
 
+        try {
+            /* Create a file to write the serialized tree to. */
+            /* Create the output stream */
+
+
+            /* Create a tree with three levels. */
+            Node lefter = new Node(10, (char) 100);
+            Node righter = new Node(20, (char) 101);
+            Node base = new Node(lefter, righter);
+
+
+            output.writeObject(base); // Write the tree to the stream.
+            output.flush();
+            output.close();    // close the file.
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
+
     public static Node read(ObjectInputStream input) throws IOException, ClassNotFoundException {
-        return null;
+        /* Open the file and set to read objects from it. */
+
+
+        /* Read a tree object, and all the subtrees */
+        Node newBase = (Node) input.readObject();
+
+        System.out.println(newBase.getLeft());
+        return newBase;
+
     }
+
+
 
     @Override
     public int compareTo(Node o) {
