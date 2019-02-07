@@ -66,7 +66,9 @@ public class HuffmanCompression {
                 addingList.add(n);
             }
         }
-
+        for (Node n : addingList) {
+            System.out.println(n.getWeight()+" "+ n.getCharacter());
+        }
         return addingList;
     }
 
