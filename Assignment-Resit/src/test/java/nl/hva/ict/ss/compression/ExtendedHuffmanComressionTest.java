@@ -44,7 +44,7 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
     @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
     public void a() {
         compressor = new HuffmanCompression("aabbccddeeffgghh"); // 3*a, 4*b, 7*c
-        compressor.getNodeCodes()
+//        compressor.getNodeCodes()
         System.out.println("a");
 
     }
