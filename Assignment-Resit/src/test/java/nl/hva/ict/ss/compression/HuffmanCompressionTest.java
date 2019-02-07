@@ -45,9 +45,8 @@ public class HuffmanCompressionTest {
         System.out.println(root.getLeft().getLeft().getWeight());
         System.out.println(root.getLeft().getRight().getWeight());
         System.out.println(root.getRight().getWeight());
-
-
     }
+
     @Test
     public void checkUniqueCharacter() {
         // Handle Linux/Mac and Windows end-of-line characters, 87 and 88 are both ok.
@@ -59,7 +58,6 @@ public class HuffmanCompressionTest {
     @Test
     public void checkSimpleCompressionRatio() {
         compressor = new HuffmanCompression("aba");
-
         assertEquals(0.125,compressor.getCompressionRatio(), 0.0001);
     }
 
