@@ -1,6 +1,8 @@
 package nl.hva.ict.ss.compression;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -92,5 +94,50 @@ public class HuffmanCompression {
 
         return codeList;
     }
+    ArrayList<Node> createNodeList(){
+
+        ArrayList<Node> nodelist = new ArrayList<>();
+        int maxAscii = 129;
+        int charsInText = 0;
+        int letterCount[] = new int[maxAscii];
+        for (int i = 0; i < maxAscii; i++) {
+            letterCount[i] = 0;
+        }
+        for (int i = 0; i < text.length() - 1; i++) {
+            int currentChar = text.charAt(i);
+            letterCount[currentChar]++;
+        }
+        for (int i = 0; i < maxAscii; i++) {
+            if (letterCount[i] > 0) {
+                ++charsInText;
+            }
+        }
+        for (Integer c = 0; c <= charsInText; c++) {
+            {
+                int biggestNumber = 0;
+                int biggestIndex = 0;
+                for (int i = 0; i < maxAscii; i++) {
+                    if (letterCount[i] > biggestNumber) {
+                        biggestIndex = i;
+                        biggestNumber = letterCount[i];
+                    }
+                }
+
+                if (biggestNumber > 0) {
+                    nodelist.add(new Node(letterCount[biggestIndex], (char) biggestIndex));
+                    letterCount[biggestIndex] = 0;
+                }
+
+            }
+
+        }
+        Collections.sort(nodelist);
+        for (Node node :nodelist
+        ) {
+            System.out.println(node.getCharacter()+ " "+ node.getWeight());
+        }
+        return nodelist;
+    }
+
 
 }
