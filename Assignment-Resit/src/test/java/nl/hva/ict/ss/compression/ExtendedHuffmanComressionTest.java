@@ -13,7 +13,7 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
 
     @Before
     public void setup() {
-        compressor = new HuffmanCompression(getClass().getResourceAsStream("/edu/princeton/cs/algs4/Huffman.java"));
+        compressor = new HuffmanCompression("NewString");
     }
     @Test
     public void checkNodeValueDistribution() {
@@ -40,6 +40,13 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
         assertEquals(2, root.getLeft().getRight().getRight().getWeight());
         assertEquals(2, root.getRight().getRight().getRight().getWeight());
         assertEquals("isNull", null, root.getRight().getRight().getCharacter());
+    }
+    @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
+    public void a() {
+        compressor = new HuffmanCompression("aabbccddeeffgghh"); // 3*a, 4*b, 7*c
+
+        System.out.println("a");
+
     }
 
 }

@@ -21,11 +21,15 @@ public class Node  implements Comparable<Node> {
         this.right = right;
     }
 
+
+
     public void write(ObjectOutputStream output) throws IOException {
 
     }
 
     public static Node read(ObjectInputStream input) throws IOException, ClassNotFoundException {
+
+
         return null;
     }
 

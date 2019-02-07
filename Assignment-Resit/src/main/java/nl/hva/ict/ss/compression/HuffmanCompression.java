@@ -29,8 +29,6 @@ public class HuffmanCompression {
         return 0.0;
     }
 
-
-
     /**
      * Returns a list with the character and the code that is used to encode it.
      * The format per entry is: "'char' -> code"
@@ -40,12 +38,36 @@ public class HuffmanCompression {
      * @return the Huffman codes
      */
 
-
     String[] getCodes() {
-        ArrayList<String> nodeCodes = new ArrayList<>();
+        //Use Node to save all node values from left to right
+        ArrayList<Node> nodeCodes = new ArrayList<>();
         Node root = getCompressionTree();
+//        while (root.getRight()=null)
+
+
         String codes[] = new String[4];
         return codes;
+    }
+
+    public ArrayList<Node> getNodeCodes(Node node) {
+        ArrayList<Node> addingList = new ArrayList<>();
+
+        if (node.getLeft().getCharacter() != null) {
+            addingList.add(node.getLeft());
+        } else {
+            for (Node n : getNodeCodes(node.getLeft())) {
+                addingList.add(n);
+            }
+        }
+        if (node.getLeft().getCharacter() != null) {
+            addingList.add(node.getRight());
+        } else {
+            for (Node n : getNodeCodes(node.getRight())) {
+                addingList.add(n);
+            }
+        }
+
+        return addingList;
     }
 
     /**
@@ -78,9 +100,7 @@ public class HuffmanCompression {
         System.out.println(root.getWeight());
         System.out.println(root.getLeft().getWeight());
         System.out.println(root.getRight().getWeight());
-
         return root;
-
     }
 
     ArrayList<Node> createNodeList() {
