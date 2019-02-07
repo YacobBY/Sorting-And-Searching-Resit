@@ -39,9 +39,12 @@ public class HuffmanCompressionTest {
     @Test
     public void checkNodes() {
         // Handle Linux/Mac and Windows end-of-line characters, 87 and 88 are both ok.
-        int  nodeListSize = compressor.createTree();
-        System.out.println(compressor.getCodes().length);
-        assertTrue("You appear to have some very strange end-of-line configuration on your machine!", nodeListSize == 86|| nodeListSize == 87 || nodeListSize == 88);
+        Node root = compressor.createTree();
+        System.out.println(root.getLeft().getWeight());
+        System.out.println(root.getRight().getWeight());
+        System.out.println(root.getRight().getCharacter());
+
+
     }
     @Test
     public void checkUniqueCharacter() {
