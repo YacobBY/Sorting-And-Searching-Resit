@@ -1,13 +1,7 @@
 package nl.hva.ict.ss.compression;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.lang.Integer.*;
-import java.lang.Math;
 
 
 public class HuffmanCompression {
@@ -25,6 +19,7 @@ public class HuffmanCompression {
 
     /**
      * Returns the compression ratio assuming that every characters in the text uses 8 bits.
+     *
      * @return the compression ratio.
      */
     public double getCompressionRatio() {
@@ -33,6 +28,7 @@ public class HuffmanCompression {
 
     /**
      * Returns the root of the compression tree.
+     *
      * @return the root of the compression tree.
      */
     Node getCompressionTree() {
@@ -44,6 +40,7 @@ public class HuffmanCompression {
      * The format per entry is: "'char' -> code"
      * For "aba" this would result in: ["'b' -> 0", "'a' -> 1"]
      * And for "cacbcac" this would result in: ["'b' -> 00", "'a' -> 01", "'c' -> 1"]
+     *
      * @return the Huffman codes
      */
     String[] getCodes() {
@@ -55,33 +52,35 @@ public class HuffmanCompression {
             letterCount[i] = 0; // -1 for chars not in pattern
 //            System.out.println(letterCount[i]);
         }
-        for (int i = 0; i < text.length()-1; i++) {
+        for (int i = 0; i < text.length() - 1; i++) {
             int currentChar = text.charAt(i);
             letterCount[currentChar]++;
         }
         for (int i = 0; i < maxAscii; i++) {
-            if (letterCount[i] > 0)
+            if (letterCount[i] > 0) {
                 charsInText++;
+                System.out.println("index " +i+ " "+letterCount[i]);
+            }
         }
 
         String codeList[] = new String[charsInText];
-        for (Integer c = 0; c <=charsInText ; c++) {
-        {
-            int biggestNumber = 0;
-            int biggestIndex = 0;
-            for (int i = 0; i <= maxAscii; i++) {
-                if (letterCount[i] > biggestNumber) {
-                    biggestIndex = i;
-                    biggestNumber = letterCount[i];
+        for (Integer c = 0; c <= charsInText; c++) {
+            {
+                int biggestNumber = 0;
+                int biggestIndex = 0;
+                for (int i = 0; i < maxAscii; i++) {
+                    if (letterCount[i] > biggestNumber) {
+                        biggestIndex = i;
+                        biggestNumber = letterCount[i];
+                    }
                 }
-            }
 
-            if (biggestNumber > 0) {
-                codeList[c] = "'"+ (char)biggestIndex + "' ->" + Integer.toBinaryString(c);
-                letterCount[biggestIndex] = 0;
-            }
+                if (biggestNumber > 0) {
+                    codeList[c] = "'" + (char) biggestIndex + "' ->" + Integer.toBinaryString(c);
+                    letterCount[biggestIndex] = 0;
+                }
 
-        }
+            }
 
         }
         for (int i = 0; i < codeList.length; i++) {
