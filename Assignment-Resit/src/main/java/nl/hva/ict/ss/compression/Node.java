@@ -1,5 +1,7 @@
 package nl.hva.ict.ss.compression;
 
+import jdk.internal.util.xml.impl.Input;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -25,22 +27,40 @@ public class Node implements Comparable<Node>, Serializable {
 
     public static Node read(ObjectInputStream input) throws IOException, ClassNotFoundException {
         /* Open the file and set to read objects from it. */
-
+        Object obj = null;
 //        if (input.get)
 //        /* Read a tree object, and all the subtrees */
-        Node newBase = (Node) input.readObject();
-//
-//        System.out.println(newBase.getLeft());
-        return newBase;
+       Node root = new Node(1, 'a');
+       Object temp = input.readObject();
+        if (temp == null){}
+        else {
+            System.out.println(((Node)temp).getCharacter());
+        }
+        temp = input.readObject();
+        if (temp == null){}
+        else {
+            System.out.println(((Node)temp).getCharacter());
+        }temp = input.readObject();
+        if (temp == null){}
+        else {
+            System.out.println(((Node)temp).getCharacter());
+        }temp = input.readObject();
+        if (temp == null){}
+        else {
+            System.out.println(((Node)temp).getCharacter());
+        }temp = input.readObject();
+        if (temp == null){}
+        else {
+            System.out.println(((Node)temp).getCharacter());
+        }
+
+        return root;
 
     }
 
     public void write(ObjectOutputStream output) throws IOException {
-        output =  new ObjectOutputStream(output);
         createOutput(output);
         output.flush();
-
-
         output.close();    // close the file.
     }
     public void createOutput(ObjectOutputStream output) throws IOException {
@@ -56,8 +76,6 @@ public class Node implements Comparable<Node>, Serializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
     }
 
     @Override
