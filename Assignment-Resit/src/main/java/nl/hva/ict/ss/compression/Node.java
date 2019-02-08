@@ -26,43 +26,37 @@ public class Node implements Comparable<Node>, Serializable {
     public static Node read(ObjectInputStream input) throws IOException, ClassNotFoundException {
         /* Open the file and set to read objects from it. */
 
-//        ArrayList<Node> addingList = new ArrayList<>();
-//
-//        if (node.getCharacter()!=null){
-//            addingList.add(node);
-//            System.out.println("node added");
-//        }
-//        else {
-//            for (Node n : getNodeCodes(node.getLeft())){
-//                addingList.add(n);
-//            }
-//            for (Node n : getNodeCodes(node.getRight())){
-//                addingList.add(n);
-//            }
-//        }
-        /* Read a tree object, and all the subtrees */
+//        if (input.get)
+//        /* Read a tree object, and all the subtrees */
         Node newBase = (Node) input.readObject();
-
-        System.out.println(newBase.getLeft());
+//
+//        System.out.println(newBase.getLeft());
         return newBase;
 
     }
 
     public void write(ObjectOutputStream output) throws IOException {
+        output =  new ObjectOutputStream(output);
+        createOutput(output);
+        output.flush();
 
+
+        output.close();    // close the file.
+    }
+    public void createOutput(ObjectOutputStream output) throws IOException {
         try {
-
-            Node base = new Node(left, right);
-            output.writeObject(null); // Write the tree to the stream.
-            output.writeObject('a'); // Write the tree to the stream.
-
-            output.flush();
-            output.close();    // close the file.
+            if (character == null){
+                output.writeObject(null);
+                left.createOutput(output);
+                right.createOutput(output);
+            }
+            else output.writeObject(new Node(weight, character));
 
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
 
     }
 
