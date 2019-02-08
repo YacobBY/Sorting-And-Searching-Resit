@@ -26,37 +26,19 @@ public class Node implements Comparable<Node>, Serializable {
     }
 
     public static Node read(ObjectInputStream input) throws IOException, ClassNotFoundException {
-        /* Open the file and set to read objects from it. */
-        Object obj = null;
-//        if (input.get)
-//        /* Read a tree object, and all the subtrees */
-       Node root = new Node(1, 'a');
+
+       Node root;
        Object temp = input.readObject();
-        if (temp == null){}
-        else {
-            System.out.println(((Node)temp).getCharacter());
+        if (temp == null){
+            root = new Node(read(input),read(input));
         }
-        temp = input.readObject();
-        if (temp == null){}
         else {
-            System.out.println(((Node)temp).getCharacter());
-        }temp = input.readObject();
-        if (temp == null){}
-        else {
-            System.out.println(((Node)temp).getCharacter());
-        }temp = input.readObject();
-        if (temp == null){}
-        else {
-            System.out.println(((Node)temp).getCharacter());
-        }temp = input.readObject();
-        if (temp == null){}
-        else {
-            System.out.println(((Node)temp).getCharacter());
+        root = (Node)temp;
         }
-
         return root;
-
     }
+
+
 
     public void write(ObjectOutputStream output) throws IOException {
         createOutput(output);

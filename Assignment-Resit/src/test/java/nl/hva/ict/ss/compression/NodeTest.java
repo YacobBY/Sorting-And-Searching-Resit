@@ -29,7 +29,9 @@ public class NodeTest {
 
             root = Node.read(input);
             System.out.println("-----------");
-            System.out.println(tree.getLeft().getLeft().getCharacter());
+
+            System.out.println(tree.getLeft().getLeft().getWeight());
+            System.out.println(tree.getLeft().getLeft().getWeight());
             System.out.println(tree.getLeft().getLeft().getWeight());
         }
 
