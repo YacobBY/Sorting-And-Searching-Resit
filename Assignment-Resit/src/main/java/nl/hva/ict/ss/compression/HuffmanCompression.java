@@ -35,14 +35,14 @@ public class HuffmanCompression {
 
         for (Node node : charsWithWeight) {
             for (String nodeCodeString : nodeCodes) {
-                if (nodeCodeString.charAt(1) == node.getCharacter()){
-                    totalShortenedChar += node.getWeight()*(nodeCodeString.length()-6);
+                if (nodeCodeString.charAt(1) == node.getCharacter()) {
+                    totalShortenedChar += node.getWeight() * (nodeCodeString.length() - 6);
                 }
             }
         }
-        System.out.println("Original amount of bits: "+originalBits);
-        System.out.println("Shortened amount of bits: "+totalShortenedChar);
-        return (double) totalShortenedChar / (double) originalBits ;
+        System.out.println("Original amount of bits: " + originalBits);
+        System.out.println("Shortened amount of bits: " + totalShortenedChar);
+        return (double) totalShortenedChar / (double) originalBits;
     }
 
     /**
@@ -66,7 +66,7 @@ public class HuffmanCompression {
         return codes;
     }
 
-     ArrayList<String> createCodeList(Node node, StringBuilder str) {
+    ArrayList<String> createCodeList(Node node, StringBuilder str) {
         ArrayList<String> addingList = new ArrayList<>();
         StringBuilder leftString = new StringBuilder(str.toString());
         StringBuilder rightString = new StringBuilder(str.toString());
@@ -131,7 +131,6 @@ public class HuffmanCompression {
                         biggestNumber = letterCount[i];
                     }
                 }
-
                 if (biggestNumber > 0) {
                     nodelist.add(new Node(letterCount[biggestIndex], (char) biggestIndex));
                     letterCount[biggestIndex] = 0;

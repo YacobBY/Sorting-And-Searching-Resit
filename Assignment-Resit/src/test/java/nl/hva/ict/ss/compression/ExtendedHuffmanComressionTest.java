@@ -13,10 +13,7 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
     @Test
     public void checkNodeValueDistribution() {
         compressor = new HuffmanCompression("aaabbbbccccccccccc"); // 3*codeListBinaryValueTest, 4*b, 11*c
-
         Node root = compressor.getCompressionTree();
-//        System.out.println(root.getLeft().getCharacter() + " " + root.getLeft().getWeight());
-//        System.out.println(root.getRight().getCharacter() + " " + root.getRight().getWeight());
         assertEquals(18, root.getWeight());
         assertEquals(3, root.getLeft().getLeft().getWeight());
         assertEquals(4, root.getLeft().getRight().getWeight());
@@ -26,8 +23,6 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
     @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
     public void evenLeavesMeansDoubleNodes() {
         compressor = new HuffmanCompression("aabbccddeeffgghh"); // 2-2 2-2 2-2 2-2
-
-
         Node root = compressor.getCompressionTree();
         assertEquals(16, root.getWeight());
         assertEquals(2, root.getLeft().getLeft().getLeft().getWeight());

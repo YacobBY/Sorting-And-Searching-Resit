@@ -19,14 +19,14 @@ public class ExtendedNodeTest extends NodeTest {
             root.write(output);
         }
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
-            assertNull( input.readObject()); //a
-            assertNull( input.readObject()); //a
-            assertEquals(1,  ( input.readObject())); //1
-            assertEquals("a",  ( input.readObject()).toString()); //a
-            assertEquals(2,  ( input.readObject())); //b
-            assertEquals("b",  ( input.readObject()).toString()); //2
-            assertEquals(6,  ( input.readObject())); //6
-            assertEquals("c",  ( input.readObject()).toString()); //2
+            assertNull(input.readObject()); //a
+            assertNull(input.readObject()); //a
+            assertEquals(1, (input.readObject())); //1
+            assertEquals("a", (input.readObject()).toString()); //a
+            assertEquals(2, (input.readObject())); //b
+            assertEquals("b", (input.readObject()).toString()); //2
+            assertEquals(6, (input.readObject())); //6
+            assertEquals("c", (input.readObject()).toString()); //2
         }
     }
 
@@ -34,15 +34,12 @@ public class ExtendedNodeTest extends NodeTest {
     public void canReadWhatWasWrittenBigTree() throws IOException, ClassNotFoundException {
         compressor = new HuffmanCompression("aabbccddeeffgghh"); // 2-2 2-2 2-2 2-2
         Node root = compressor.getCompressionTree();
-
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(("huffman-tree.bin")))) {
             root.write(output);
         }
-
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
             root = Node.read(input);
         }
-
         assertEquals(16, root.getWeight());
         assertEquals(2, root.getLeft().getLeft().getLeft().getWeight());
         assertEquals(2, root.getLeft().getRight().getRight().getWeight());
@@ -53,8 +50,6 @@ public class ExtendedNodeTest extends NodeTest {
     @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
     public void evenWriteIsDoubleRead() {
         compressor = new HuffmanCompression("aabbccddeeffgghh"); // 3*codeListBinaryValueTest, 4*b, 7*c
-
-
         Node root = compressor.getCompressionTree();
         assertEquals(16, root.getWeight());
         assertEquals(2, root.getLeft().getLeft().getLeft().getWeight());

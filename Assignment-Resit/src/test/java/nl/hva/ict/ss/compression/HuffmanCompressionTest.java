@@ -17,11 +17,8 @@ public class HuffmanCompressionTest {
     @Test
     public void checkWeightSimple() {
         compressor = new HuffmanCompression("aba");
-
         Node compressionTree = compressor.getCompressionTree();
-
         assertEquals(3, compressionTree.getWeight());
-
         Node left = compressionTree.getLeft();
         Node right = compressionTree.getRight();
         assertEquals(1, left.getWeight());
