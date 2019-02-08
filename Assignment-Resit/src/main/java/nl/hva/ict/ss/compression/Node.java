@@ -1,12 +1,9 @@
 package nl.hva.ict.ss.compression;
 
-import jdk.internal.util.xml.impl.Input;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Node implements Comparable<Node>, Serializable {
     private Node left;
@@ -51,7 +48,7 @@ public class Node implements Comparable<Node>, Serializable {
             else {
                 output.writeObject(weight);
                 output.writeObject(character);
-            };
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -59,7 +56,6 @@ public class Node implements Comparable<Node>, Serializable {
 
     @Override
     public int compareTo(Node o) {
-
         return weight - o.getWeight();
     }
 

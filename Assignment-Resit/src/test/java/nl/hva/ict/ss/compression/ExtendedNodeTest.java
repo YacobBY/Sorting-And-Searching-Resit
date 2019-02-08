@@ -1,7 +1,6 @@
 package nl.hva.ict.ss.compression;
 
 import org.junit.Test;
-
 import java.io.*;
 
 import static org.junit.Assert.assertEquals;

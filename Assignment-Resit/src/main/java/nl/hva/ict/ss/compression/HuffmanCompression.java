@@ -11,7 +11,6 @@ public class HuffmanCompression {
 
     public HuffmanCompression(String text) {
         this.text = text;
-
     }
 
     public HuffmanCompression(InputStream input) {
@@ -55,10 +54,7 @@ public class HuffmanCompression {
      */
 
     String[] getCodes() {
-        //Use Node to save all node values from left to right
-        Node root = getCompressionTree();
-        ArrayList<String> nodeCodes = createCodeList(root, new StringBuilder());
-
+        ArrayList<String> nodeCodes = createCodeList(getCompressionTree(), new StringBuilder());
         String codes[] = new String[nodeCodes.size()];
         for (int i = 0; i < nodeCodes.size(); i++) {
             codes[i] = nodeCodes.get(i);
@@ -79,7 +75,6 @@ public class HuffmanCompression {
             for (String s : createCodeList(node.getRight(), rightString.append("1"))) {
                 addingList.add(s);
             }
-
         }
         return addingList;
     }

@@ -1,6 +1,5 @@
 package nl.hva.ict.ss.compression;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
