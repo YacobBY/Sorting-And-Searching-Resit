@@ -97,8 +97,6 @@ public class HuffmanCompression {
     Node getCompressionTree() {
         ArrayList<Node> nodeList = createNodeList();
 
-        Collections.sort(nodeList, Collections.reverseOrder());
-
         while (nodeList.size() > 2) {
 //            System.out.println(nodeList.get(nodeList.size() - 1).getWeight());
             Node node1 = nodeList.get(nodeList.size() - 1);
@@ -156,6 +154,7 @@ public class HuffmanCompression {
 //            System.out.println(node.getCharacter() + " " + node.getWeight());
 //        }
 //        System.out.println(nodelist.size());
+        Collections.sort(nodelist, Collections.reverseOrder());
         return nodelist;
     }
 
