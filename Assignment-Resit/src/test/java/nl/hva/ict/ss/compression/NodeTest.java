@@ -13,7 +13,7 @@ public class NodeTest {
     public void canReadWhatWasWritten() throws IOException, ClassNotFoundException {
 
 
-        compressor = new HuffmanCompression("aaabbbbccccccc"); // 3*codeListBinaryValueTest, 4*b, 7*c
+        compressor = new HuffmanCompression("aba"); // 3*codeListBinaryValueTest, 4*b, 7*c
         Node root = compressor.getCompressionTree();
 
 
@@ -30,12 +30,10 @@ public class NodeTest {
             root = Node.read(input);
             System.out.println("-----------");
 
-            System.out.println(tree.getLeft().getLeft().getWeight());
-            System.out.println(tree.getLeft().getLeft().getWeight());
-            System.out.println(tree.getLeft().getLeft().getWeight());
+
         }
 
-        assertEquals(Character.valueOf('b'), tree.getLeft().getCharacter());
-        assertEquals(Character.valueOf('a'), tree.getRight().getCharacter());
+        assertEquals(Character.valueOf('b'), root.getLeft().getCharacter());
+        assertEquals(Character.valueOf('a'), root.getRight().getCharacter());
     }
 }
