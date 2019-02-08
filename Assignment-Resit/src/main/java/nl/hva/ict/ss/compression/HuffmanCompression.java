@@ -26,7 +26,23 @@ public class HuffmanCompression {
      * @return the compression ratio.
      */
     public double getCompressionRatio() {
-        return 0.0;
+        Node root = getCompressionTree();
+        int originalBits = root.getWeight() * 8;// original would be 8 bits per char = total occurrences *8
+        int totalShortenedChar = 0;
+
+        ArrayList<String> nodeCodes = createCodeList(root, new StringBuilder());
+        ArrayList<Node> charsWithWeight = createNodeList();
+
+        for (Node node : charsWithWeight) {
+            for (String nodeCodeString : nodeCodes) {
+                if (nodeCodeString.charAt(1) == node.getCharacter()){
+                    totalShortenedChar += node.getWeight()*(nodeCodeString.length()-6);
+                }
+            }
+        }
+        System.out.println(originalBits);
+        System.out.println(totalShortenedChar);
+        return (double) totalShortenedChar / (double) originalBits ;
     }
 
     /**
@@ -41,15 +57,15 @@ public class HuffmanCompression {
     String[] getCodes() {
         //Use Node to save all node values from left to right
         Node root = getCompressionTree();
-        ArrayList<String> nodecodes = createCodeList(root, new StringBuilder());
+        ArrayList<String> nodeCodes = createCodeList(root, new StringBuilder());
 
-        String codes[] = new String[nodecodes.size()];
-        for (int i = 0; i < nodecodes.size(); i++) {
-            codes[i] = nodecodes.get(i);
+        String codes[] = new String[nodeCodes.size()];
+        for (int i = 0; i < nodeCodes.size(); i++) {
+            codes[i] = nodeCodes.get(i);
         }
-        for (int i = 0; i < codes.length; i++) {
-            System.out.println(codes[i]);
-        }
+//        for (int i = 0; i < codes.length; i++) {
+//            System.out.println(codes[i]);
+//        }
         return codes;
     }
 
@@ -82,11 +98,6 @@ public class HuffmanCompression {
         ArrayList<Node> nodeList = createNodeList();
 
         Collections.sort(nodeList, Collections.reverseOrder());
-        for (Node node : nodeList
-        ) {
-//            System.out.println(node.getCharacter() + " " + node.getWeight());
-        }
-//        System.out.println(nodeList.size());
 
         while (nodeList.size() > 2) {
 //            System.out.println(nodeList.get(nodeList.size() - 1).getWeight());
