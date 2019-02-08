@@ -47,7 +47,6 @@ public class ExtendedHuffmanCompressionTest extends HuffmanCompressionTest {
         System.out.println("Index 3 = "+ testListHolder.get(3).substring(6));
         assertEquals(testListHolder.get(0).substring(6), "00");
         assertEquals(testListHolder.get(3).substring(6), "11");
-
     }
 
 }
