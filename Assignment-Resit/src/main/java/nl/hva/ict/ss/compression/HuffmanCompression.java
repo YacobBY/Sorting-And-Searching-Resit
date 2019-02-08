@@ -49,20 +49,22 @@ public class HuffmanCompression {
         return codes;
     }
 
-    public ArrayList<Node> getNodeCodes(Node node) {
-        ArrayList<Node> addingList = new ArrayList<>();
-
+    public ArrayList<String> getNodeCodes(Node node, StringBuilder str) {
+        ArrayList<String> addingList = new ArrayList<>();
+        StringBuilder leftString = new StringBuilder(str.toString());
+        StringBuilder rightString = new StringBuilder(str.toString());
         if (node.getCharacter()!=null){
-            addingList.add(node);
+            addingList.add("'" + node.getCharacter()+"'"+ "-> "+ str);
             System.out.println("node added");
         }
         else {
-            for (Node n : getNodeCodes(node.getLeft())){
-                addingList.add(n);
+            for (String s : getNodeCodes(node.getLeft(), leftString.append("0")) ){
+                addingList.add(s);
             }
-            for (Node n : getNodeCodes(node.getRight())){
-                addingList.add(n);
+            for (String s : getNodeCodes(node.getRight(), rightString.append("1")) ){
+                addingList.add(s);
             }
+
         }
         return addingList;
     }

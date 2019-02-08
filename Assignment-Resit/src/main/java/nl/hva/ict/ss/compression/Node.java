@@ -25,11 +25,7 @@ public class Node  implements Comparable<Node> ,Serializable  {
 
         try {
 
-
-
             Node base = new Node(left, right);
-
-
             output.writeObject(null); // Write the tree to the stream.
             output.writeObject('a'); // Write the tree to the stream.
 
