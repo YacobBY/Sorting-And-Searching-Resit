@@ -41,15 +41,14 @@ public class HuffmanCompression {
     String[] getCodes() {
         //Use Node to save all node values from left to right
         Node root = getCompressionTree();
-        ArrayList<String> nodecodes  = createCodeList(root, new StringBuilder());
+        ArrayList<String> nodecodes = createCodeList(root, new StringBuilder());
 
         String codes[] = new String[nodecodes.size()];
         for (int i = 0; i < nodecodes.size(); i++) {
             codes[i] = nodecodes.get(i);
         }
-//        System.out.println("aaaaaaaa");
         for (int i = 0; i < codes.length; i++) {
-            System.out.println( codes[i]);
+            System.out.println(codes[i]);
         }
         return codes;
     }
@@ -58,15 +57,14 @@ public class HuffmanCompression {
         ArrayList<String> addingList = new ArrayList<>();
         StringBuilder leftString = new StringBuilder(str.toString());
         StringBuilder rightString = new StringBuilder(str.toString());
-        if (node.getCharacter()!=null){
-            addingList.add("'" + node.getCharacter()+"'"+ "-> "+ str);
+        if (node.getCharacter() != null) {
+            addingList.add("'" + node.getCharacter() + "'" + "-> " + str);
 //            System.out.println("node added");
-        }
-        else {
-            for (String s : createCodeList(node.getLeft(), leftString.append("0")) ){
+        } else {
+            for (String s : createCodeList(node.getLeft(), leftString.append("0"))) {
                 addingList.add(s);
             }
-            for (String s : createCodeList(node.getRight(), rightString.append("1")) ){
+            for (String s : createCodeList(node.getRight(), rightString.append("1"))) {
                 addingList.add(s);
             }
 

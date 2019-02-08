@@ -10,7 +10,7 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
 
     @Before
     public void setup() {
-        compressor = new HuffmanCompression("NewString");
+        compressor = new HuffmanCompression(getClass().getResourceAsStream("/edu/princeton/cs/algs4/Huffman.java"));
     }
 
     @Test
