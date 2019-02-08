@@ -69,7 +69,7 @@ public class HuffmanCompression {
         return codes;
     }
 
-    public ArrayList<String> createCodeList(Node node, StringBuilder str) {
+     ArrayList<String> createCodeList(Node node, StringBuilder str) {
         ArrayList<String> addingList = new ArrayList<>();
         StringBuilder leftString = new StringBuilder(str.toString());
         StringBuilder rightString = new StringBuilder(str.toString());
