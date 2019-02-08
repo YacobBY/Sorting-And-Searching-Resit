@@ -46,15 +46,5 @@ public class ExtendedNodeTest extends NodeTest {
         assertEquals("isNull", null, root.getRight().getRight().getCharacter());
     }
 
-    @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
-    public void evenWriteIsDoubleRead() {
-        compressor = new HuffmanCompression("aabbccddeeffgghh"); // 3*codeListBinaryValueTest, 4*b, 7*c
-        Node root = compressor.getCompressionTree();
-        assertEquals(16, root.getWeight());
-        assertEquals(2, root.getLeft().getLeft().getLeft().getWeight());
-        assertEquals(2, root.getLeft().getRight().getRight().getWeight());
-        assertEquals(2, root.getRight().getRight().getRight().getWeight());
-        assertEquals("isNull", null, root.getRight().getRight().getCharacter());
-    }
 
 }
