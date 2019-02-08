@@ -38,16 +38,13 @@ public class Node implements Comparable<Node>, Serializable {
         root = (Node)temp;
             System.out.println(root.getWeight()+ " "+ root.getCharacter());
         }
-
         return root;
     }
-
-
 
     public void write(ObjectOutputStream output) throws IOException {
         createOutput(output);
         output.flush();
-        output.close();    // close the file.
+        output.close();
     }
     public void createOutput(ObjectOutputStream output) throws IOException {
         try {
@@ -57,8 +54,6 @@ public class Node implements Comparable<Node>, Serializable {
                 right.createOutput(output);
             }
             else output.writeObject(new Node(weight, character));
-
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }

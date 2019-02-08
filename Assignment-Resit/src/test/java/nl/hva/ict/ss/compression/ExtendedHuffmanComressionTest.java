@@ -24,8 +24,8 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
     }
 
     @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
-    public void evenLeafsMeansDoubleNodes() {
-        compressor = new HuffmanCompression("aabbccddeeffgghh"); // 3*codeListBinaryValueTest, 4*b, 7*c
+    public void evenLeavesMeansDoubleNodes() {
+        compressor = new HuffmanCompression("aabbccddeeffgghh"); // 2-2 2-2 2-2 2-2
 
 
         Node root = compressor.getCompressionTree();

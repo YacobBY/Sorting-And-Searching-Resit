@@ -11,29 +11,18 @@ public class NodeTest {
 
     @Test
     public void canReadWhatWasWritten() throws IOException, ClassNotFoundException {
-
-
         compressor = new HuffmanCompression("aba"); // 3*codeListBinaryValueTest, 4*b, 7*c
-        Node root = compressor.getCompressionTree();
-
-
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(("huffman-tree.bin")))) {
-
-
             Node tree = new Node(new Node(1, 'b'), new Node(2, 'a'));
-            root.write(output);
+            tree.write(output);
         }
-
         Node tree = null;
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
-
-            root = Node.read(input);
+            tree = Node.read(input);
             System.out.println("-----------");
-
-
         }
 
-        assertEquals(Character.valueOf('b'), root.getLeft().getCharacter());
-        assertEquals(Character.valueOf('a'), root.getRight().getCharacter());
+        assertEquals(Character.valueOf('b'), tree.getLeft().getCharacter());
+        assertEquals(Character.valueOf('a'), tree.getRight().getCharacter());
     }
 }
