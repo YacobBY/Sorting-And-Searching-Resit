@@ -19,10 +19,9 @@ public class HuffmanCompressionTest {
         compressor = new HuffmanCompression("aba");
 
         Node root = compressor.getCompressionTree();
-        System.out.println(root.getLeft().getCharacter()+ " "+ root.getLeft().getWeight());
-        System.out.println(root.getRight().getCharacter()+ " "+ root.getRight().getWeight());
+        System.out.println(root.getLeft().getCharacter()+ " weight =  "+ root.getLeft().getWeight());
+        System.out.println(root.getRight().getCharacter()+ " weight =  "+ root.getRight().getWeight());
         assertEquals(3, root.getWeight());
-
         Node left = root.getLeft();
         Node right = root.getRight();
         assertEquals(1, left.getWeight());
@@ -45,6 +44,7 @@ public class HuffmanCompressionTest {
         System.out.println(root.getLeft().getLeft().getWeight());
         System.out.println(root.getLeft().getRight().getWeight());
         System.out.println(root.getRight().getWeight());
+
     }
 
     @Test
@@ -54,6 +54,7 @@ public class HuffmanCompressionTest {
         System.out.println(compressor.getCodes().length);
         assertTrue("You appear to have some very strange end-of-line configuration on your machine!", numberOfChars == 86|| numberOfChars == 87 || numberOfChars == 88);
     }
+
 
     @Test
     public void checkSimpleCompressionRatio() {

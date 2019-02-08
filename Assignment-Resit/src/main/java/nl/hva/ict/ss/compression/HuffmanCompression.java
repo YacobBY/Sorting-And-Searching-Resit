@@ -40,28 +40,33 @@ public class HuffmanCompression {
 
     String[] getCodes() {
         //Use Node to save all node values from left to right
-        ArrayList<Node> nodeCodes = new ArrayList<>();
         Node root = getCompressionTree();
-//        while (root.getRight()=null)
+        ArrayList<String> nodecodes  = createCodeList(root, new StringBuilder());
 
-
-        String codes[] = new String[4];
+        String codes[] = new String[nodecodes.size()];
+        for (int i = 0; i < nodecodes.size(); i++) {
+            codes[i] = nodecodes.get(i);
+        }
+//        System.out.println("aaaaaaaa");
+        for (int i = 0; i < codes.length; i++) {
+            System.out.println( codes[i]);
+        }
         return codes;
     }
 
-    public ArrayList<String> getNodeCodes(Node node, StringBuilder str) {
+    public ArrayList<String> createCodeList(Node node, StringBuilder str) {
         ArrayList<String> addingList = new ArrayList<>();
         StringBuilder leftString = new StringBuilder(str.toString());
         StringBuilder rightString = new StringBuilder(str.toString());
         if (node.getCharacter()!=null){
             addingList.add("'" + node.getCharacter()+"'"+ "-> "+ str);
-            System.out.println("node added");
+//            System.out.println("node added");
         }
         else {
-            for (String s : getNodeCodes(node.getLeft(), leftString.append("0")) ){
+            for (String s : createCodeList(node.getLeft(), leftString.append("0")) ){
                 addingList.add(s);
             }
-            for (String s : getNodeCodes(node.getRight(), rightString.append("1")) ){
+            for (String s : createCodeList(node.getRight(), rightString.append("1")) ){
                 addingList.add(s);
             }
 
@@ -81,12 +86,12 @@ public class HuffmanCompression {
         Collections.sort(nodeList, Collections.reverseOrder());
         for (Node node : nodeList
         ) {
-            System.out.println(node.getCharacter() + " " + node.getWeight());
+//            System.out.println(node.getCharacter() + " " + node.getWeight());
         }
-        System.out.println(nodeList.size());
+//        System.out.println(nodeList.size());
 
         while (nodeList.size() > 2) {
-            System.out.println(nodeList.get(nodeList.size() - 1).getWeight());
+//            System.out.println(nodeList.get(nodeList.size() - 1).getWeight());
             Node node1 = nodeList.get(nodeList.size() - 1);
             nodeList.remove(nodeList.get(nodeList.size() - 1));
             Node node2 = nodeList.get(nodeList.size() - 1);
@@ -96,9 +101,9 @@ public class HuffmanCompression {
         }
 
         Node root = new Node(nodeList.get(nodeList.size() - 1), nodeList.get(nodeList.size() - 2));
-        System.out.println(root.getWeight());
-        System.out.println(root.getLeft().getWeight());
-        System.out.println(root.getRight().getWeight());
+//        System.out.println(root.getWeight());
+//        System.out.println(root.getLeft().getWeight());
+//        System.out.println(root.getRight().getWeight());
         return root;
     }
 
