@@ -29,8 +29,6 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
 
 
         Node root = compressor.getCompressionTree();
-        System.out.println(root.getLeft().getCharacter() + " " + root.getLeft().getWeight());
-        System.out.println(root.getRight().getCharacter() + " " + root.getRight().getWeight());
         assertEquals(16, root.getWeight());
         assertEquals(2, root.getLeft().getLeft().getLeft().getWeight());
         assertEquals(2, root.getLeft().getRight().getRight().getWeight());

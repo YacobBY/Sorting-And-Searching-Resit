@@ -30,7 +30,6 @@ public class HuffmanCompressionTest {
 
     @Test
     public void checkUniqueCharacter() {
-        compressor = new HuffmanCompression(getClass().getResourceAsStream("/edu/princeton/cs/algs4/Huffman.java"));
         // Handle Linux/Mac and Windows end-of-line characters, 87 and 88 are both ok.
         int numberOfChars = compressor.getCodes().length;
         assertTrue("You appear to have some very strange end-of-line configuration on your machine!", numberOfChars == 87 || numberOfChars == 88);
@@ -39,6 +38,7 @@ public class HuffmanCompressionTest {
     @Test
     public void checkSimpleCompressionRatio() {
         compressor = new HuffmanCompression("aba");
+
         assertEquals(0.125,compressor.getCompressionRatio(), 0.0001);
     }
 

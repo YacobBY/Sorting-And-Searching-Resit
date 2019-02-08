@@ -19,7 +19,6 @@ public class NodeTest {
         Node tree = null;
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
             tree = Node.read(input);
-            System.out.println("-----------");
         }
 
         assertEquals(Character.valueOf('b'), tree.getLeft().getCharacter());

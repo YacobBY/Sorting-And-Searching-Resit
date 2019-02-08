@@ -26,16 +26,12 @@ public class Node implements Comparable<Node>, Serializable {
     }
 
     public static Node read(ObjectInputStream input) throws IOException, ClassNotFoundException {
-
-
        Object temp = input.readObject();
-        System.out.println(temp);
         if (temp == null){
             return new Node(read(input),read(input));
         }
         else {
             Node newNode = new Node((int) temp, (char)input.readObject());
-            System.out.println(newNode.getWeight()+ " "+ newNode.getCharacter());
             return newNode;
         }
     }
@@ -45,7 +41,7 @@ public class Node implements Comparable<Node>, Serializable {
         output.flush();
         output.close();
     }
-    public void createOutput(ObjectOutputStream output) throws IOException {
+    void createOutput(ObjectOutputStream output) throws IOException {
         try {
             if (character == null){
                 output.writeObject(null);
