@@ -24,23 +24,25 @@ public class Node  implements Comparable<Node> ,Serializable  {
     public void write(ObjectOutputStream output) throws IOException {
 
         try {
-            /* Create a file to write the serialized tree to. */
-            /* Create the output stream */
 
 
-            /* Create a tree with three levels. */
 
             Node base = new Node(left, right);
 
 
-            output.writeObject(base); // Write the tree to the stream.
+            output.writeObject(null); // Write the tree to the stream.
+            output.writeObject('a'); // Write the tree to the stream.
+
             output.flush();
             output.close();    // close the file.
+
+
 
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
     }
 
 
