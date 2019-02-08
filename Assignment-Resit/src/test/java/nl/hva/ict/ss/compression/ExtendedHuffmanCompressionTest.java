@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
+public class ExtendedHuffmanCompressionTest extends HuffmanCompressionTest {
     HuffmanCompression compressor;
 
     @Test
