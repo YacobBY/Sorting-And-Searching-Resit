@@ -12,30 +12,24 @@ public class ExtendedNodeTest extends NodeTest {
     @Test
     public void OutputStreamIsPreOrder() throws IOException, ClassNotFoundException {
         compressor = new HuffmanCompression("abbcccccc");
+        //should output: null null 1 a 2 b 6 c
         Node root = compressor.getCompressionTree();
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(("huffman-tree.bin")))) {
             root.write(output);
         }
 
-
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
 
-
-//            System.out.println((input.readObject()) ); //a
-//            System.out.println((input.readObject()) ); //a
-//            System.out.println((input.readObject()) ); //a
-//            System.out.println((input.readObject()) ); //a
-//            System.out.println((input.readObject()) ); //a
-//            System.out.println((input.readObject()) ); //a
 
             assertNull( input.readObject()); //a
             assertNull( input.readObject()); //a
             assertEquals(1,  ( input.readObject())); //1
-            assertEquals(1,  ( input.readObject())); //a
-            assertEquals(1,  ( input.readObject())); //2
-            assertEquals(1,  ( input.readObject())); //b
-            assertEquals(1,  ( input.readObject())); //6
-            assertEquals(1,  ( input.readObject())); //c
+            assertEquals("a",  ( input.readObject()).toString()); //a
+            assertEquals(2,  ( input.readObject())); //b
+            assertEquals("b",  ( input.readObject()).toString()); //2
+            assertEquals(6,  ( input.readObject())); //6
+            assertEquals("c",  ( input.readObject()).toString()); //2
+
 //            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //a
 //            assertEquals(2,  ((Node)input.readObject()).getWeight() ); //a
 //            assertNull( input.readObject()); //a
