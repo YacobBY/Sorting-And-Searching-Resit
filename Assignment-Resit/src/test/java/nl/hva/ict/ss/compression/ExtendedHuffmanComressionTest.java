@@ -27,6 +27,7 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
         assertEquals(2, root.getLeft().getLeft().getLeft().getWeight());
         assertEquals(2, root.getLeft().getRight().getRight().getWeight());
         assertEquals(2, root.getRight().getRight().getRight().getWeight());
+        assertEquals("isNull", null, root.getRight().getCharacter());
         assertEquals("isNull", null, root.getRight().getRight().getCharacter());
     }
 
