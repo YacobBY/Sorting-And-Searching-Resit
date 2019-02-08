@@ -3,19 +3,16 @@ package nl.hva.ict.ss.compression;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
     HuffmanCompression compressor;
 
-    @Before
-    public void setup() {
-        compressor = new HuffmanCompression(getClass().getResourceAsStream("/edu/princeton/cs/algs4/Huffman.java"));
-    }
-
     @Test
     public void checkNodeValueDistribution() {
-        compressor = new HuffmanCompression("aaabbbbccccccc"); // 3*a, 4*b, 7*c
+        compressor = new HuffmanCompression("aaabbbbccccccc"); // 3*codeListBinaryValueTest, 4*b, 7*c
 
         Node root = compressor.getCompressionTree();
         System.out.println(root.getLeft().getCharacter() + " " + root.getLeft().getWeight());
@@ -28,7 +25,7 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
 
     @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
     public void evenLeafsMeansDoubleNodes() {
-        compressor = new HuffmanCompression("aabbccddeeffgghh"); // 3*a, 4*b, 7*c
+        compressor = new HuffmanCompression("aabbccddeeffgghh"); // 3*codeListBinaryValueTest, 4*b, 7*c
 
 
         Node root = compressor.getCompressionTree();
@@ -41,17 +38,22 @@ public class ExtendedHuffmanComressionTest extends HuffmanCompressionTest {
         assertEquals("isNull", null, root.getRight().getRight().getCharacter());
     }
 
-    @Test //Checks whether it makes sufficient nodes for each leaf and whether middle nodes are empty
-    public void a() {
-        compressor = new HuffmanCompression("aabbccddd"); // 3*a, 4*b, 7*c
+    @Test
+    public void codeListBinaryValueTest() {
+        compressor = new HuffmanCompression("aabbccddd"); // 3*codeListBinaryValueTest, 4*b, 7*c
         Node root = compressor.getCompressionTree();
         System.out.println("READING FROM TREE");
+        ArrayList<String> testListHolder = compressor.createCodeList(root, new StringBuilder());
 
         for (String n : compressor.createCodeList(root, new StringBuilder())) {
             System.out.println(n);
         }
 
-        System.out.println("a");
+        System.out.println("codeListBinaryValueTest");
+        System.out.println("Index 0 = "+ testListHolder.get(0).substring(6));
+        System.out.println("Index 3 = "+ testListHolder.get(3).substring(6));
+        assertEquals(testListHolder.get(0).substring(6), "00");
+        assertEquals(testListHolder.get(3).substring(6), "11");
 
     }
 

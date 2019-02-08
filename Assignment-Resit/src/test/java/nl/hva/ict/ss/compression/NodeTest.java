@@ -13,7 +13,7 @@ public class NodeTest {
     public void canReadWhatWasWritten() throws IOException, ClassNotFoundException {
 
 
-        compressor = new HuffmanCompression("aaabbbbccccccc"); // 3*a, 4*b, 7*c
+        compressor = new HuffmanCompression("aaabbbbccccccc"); // 3*codeListBinaryValueTest, 4*b, 7*c
         Node root = compressor.getCompressionTree();
 
 
