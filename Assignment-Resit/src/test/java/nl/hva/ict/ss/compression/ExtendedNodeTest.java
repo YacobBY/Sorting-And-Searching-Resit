@@ -21,6 +21,13 @@ public class ExtendedNodeTest extends NodeTest {
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
 
 
+//            System.out.println((input.readObject()) ); //a
+//            System.out.println((input.readObject()) ); //a
+//            System.out.println((input.readObject()) ); //a
+//            System.out.println((input.readObject()) ); //a
+//            System.out.println((input.readObject()) ); //a
+//            System.out.println((input.readObject()) ); //a
+
             assertNull( input.readObject()); //a
             assertNull( input.readObject()); //a
             assertEquals(1,  ( input.readObject())); //1
@@ -29,13 +36,6 @@ public class ExtendedNodeTest extends NodeTest {
             assertEquals(1,  ( input.readObject())); //b
             assertEquals(1,  ( input.readObject())); //6
             assertEquals(1,  ( input.readObject())); //c
-            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //a
-            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //2
-            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //b
-            assertEquals(2,  ((Node)input.readObject()).getWeight() ); //6
-            assertEquals(2,  ((Node)input.readObject()).getWeight() );//c
-
-//            assertNull( input.readObject()); //a
 //            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //a
 //            assertEquals(2,  ((Node)input.readObject()).getWeight() ); //a
 //            assertNull( input.readObject()); //a
