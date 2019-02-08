@@ -11,7 +11,7 @@ public class ExtendedNodeTest extends NodeTest {
     // Put your tests here...
     @Test
     public void OutputStreamIsPreOrder() throws IOException, ClassNotFoundException {
-        compressor = new HuffmanCompression("abbcc");
+        compressor = new HuffmanCompression("abbcccccc");
         Node root = compressor.getCompressionTree();
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(("huffman-tree.bin")))) {
             root.write(output);
@@ -20,12 +20,20 @@ public class ExtendedNodeTest extends NodeTest {
 
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
 
-            System.out.println( root = (Node)input.readObject()); //a
-            System.out.println((input.readObject()) ); //a
-            System.out.println((input.readObject()) ); //a
-            System.out.println((input.readObject()) ); //a
-            System.out.println((input.readObject()) ); //a
 
+            assertNull( input.readObject()); //a
+            assertNull( input.readObject()); //a
+            assertEquals(1,  ( input.readObject())); //1
+            assertEquals(1,  ( input.readObject())); //a
+            assertEquals(1,  ( input.readObject())); //2
+            assertEquals(1,  ( input.readObject())); //b
+            assertEquals(1,  ( input.readObject())); //6
+            assertEquals(1,  ( input.readObject())); //c
+            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //a
+            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //2
+            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //b
+            assertEquals(2,  ((Node)input.readObject()).getWeight() ); //6
+            assertEquals(2,  ((Node)input.readObject()).getWeight() );//c
 
 //            assertNull( input.readObject()); //a
 //            assertEquals(1,  ((Node)input.readObject()).getWeight() ); //a
@@ -44,18 +52,16 @@ public class ExtendedNodeTest extends NodeTest {
 
     }
 
-    @Test
+    @Test //Writes a big tree to a binary file as weights and chars, then constructs the tree back from them
     public void canReadWhatWasWrittenBigTree() throws IOException, ClassNotFoundException {
         compressor = new HuffmanCompression("aabbccddeeffgghh"); // 2-2 2-2 2-2 2-2
         Node root = compressor.getCompressionTree();
 
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(("huffman-tree.bin")))) {
-            Node tree = new Node(new Node(1, 'b'), new Node(2, 'a'));
             root.write(output);
         }
-        Node tree = null;
-        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
 
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(("huffman-tree.bin")))) {
             root = Node.read(input);
             System.out.println("-----------");
         }
