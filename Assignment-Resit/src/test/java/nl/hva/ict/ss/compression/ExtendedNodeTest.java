@@ -14,6 +14,7 @@ public class ExtendedNodeTest extends NodeTest {
         compressor = new HuffmanCompression("abbcccccc");
         //should output: null null 1 a 2 b 6 c
         Node root = compressor.getCompressionTree();
+
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(("huffman-tree.bin")))) {
             root.write(output);
         }
